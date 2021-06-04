@@ -4,7 +4,7 @@
 module tb_sharedArith();
 
     parameter p_inputWidth          = 8;
-    parameter p_PointPosition       = 3;
+    parameter p_PointPosition       = 6;
     localparam p_mulOutputWidth = 2*p_inputWidth - p_PointPosition + 1;
 
 
@@ -16,31 +16,13 @@ module tb_sharedArith();
     // Inputs
 	reg CLK, CLK5;
 	reg RST;
-	reg [15:0] i_m1;
-	reg [15:0] i_m2;
-	reg [15:0] i_m3;
-	reg [15:0] i_m4;
-	reg [15:0] i_n1;
-	reg [15:0] i_n2;
-	reg [15:0] i_n3;
-	reg [15:0] i_n4;
-	reg [15:0] i_l1;
-	reg [15:0] i_l2;
-	reg [15:0] i_l3;
-	reg [15:0] i_l4;
+	reg [2 * p_inputWidth - 1 : 0] i_m1,i_m2,i_m3,i_m4,i_n1,i_n2,i_n3,i_n4,i_l1,i_l2,i_l3,i_l4;
 
 	// Outputs
-	wire [27:0] o_r1_p;
-	wire [27:0] o_r1_m;
-	wire [27:0] o_r2_p;
-	wire [27:0] o_r2_m;
-	wire [27:0] o_r3_p;
-	wire [27:0] o_r3_m;
-	wire [27:0] o_r4_p;
-	wire [27:0] o_r4_m;
+	wire [2* (2*p_inputWidth - p_PointPosition) + 1:0] o_r1_p,o_r1_m,o_r2_p,o_r2_m,o_r3_p,o_r3_m,o_r4_p,o_r4_m;
 	
 	// 10MHz Reg
-	wire [27:0] out1_p, out1_m, out2_p, out2_m, out3_p, out3_m, out4_p, out4_m;
+	wire [2* (2*p_inputWidth - p_PointPosition) + 1:0] out1_p, out1_m, out2_p, out2_m, out3_p, out3_m, out4_p, out4_m;
 	
 	
 	// First Output Register
