@@ -11,9 +11,58 @@ module tb_Stage2#(  parameter p_inputBits=16,
 reg [p_inputBits-1:0]  i_b [31:0];
 reg [p_widdleBits-1:0]  i_w[3:0];
 reg CLK;
+reg CLK5;
 reg RST;
 
 wire [p_outputBits-1:0]  o_c[31:0];
+
+integer  CLK_period  = 2 ; 
+integer  i;
+
+initial begin
+    CLK=1;
+    forever begin
+        #(5*CLK_period/2) CLK <= !CLK ;
+    end
+end
+
+initial begin
+    CLK5=1;
+    forever begin
+        #(CLK_period/2) CLK5 <= !CLK5 ;
+    end
+end
+
+initial begin
+    RST = 1 ;
+    # (5*CLK_period*5) ;
+    RST = 0 ;
+   
+   ////////test random variables with all twiddle values equal to one ///////////
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=$urandom;
+    end
+
+    for ( i=0; i<4; i=i+1) begin
+        i_w[i]=16'h0001;
+    end
+    #(5*CLK_period);
+   ////////test random variables with the acual twiddle values ///////////
+
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=$urandom;
+    end
+    i_w[0]=16'h0100;
+    i_w[1]=16'h05fb;
+    i_w[2]=16'h00ff;
+    i_w[3]=16'hfbfb;
+end
+
+
+
+
+
+
 
 
 Stage2 #(   .p_inputBits        (p_inputBits),
@@ -26,7 +75,7 @@ Stage2 #(   .p_inputBits        (p_inputBits),
             (   
                 
                 ///// clock and reset ///////
-                .CLK(CLK),
+                .CLK(CLK5),
                 .RST(RST),
                 //// inputs to the stage //////////
                 .i_b0(i_b[0])  ,
@@ -67,7 +116,7 @@ Stage2 #(   .p_inputBits        (p_inputBits),
                 .i_w28(i_w[2]),
                 .i_w38(i_w[3]),
                 ////// Outputs from the stage ///////
-                .o_c0(o_c[0]),
+                .o_c0(o_c[0])  ,
                 .o_c1(o_c[1])  ,
                 .o_c2(o_c[2])  ,
                 .o_c3(o_c[3])  ,
