@@ -44,7 +44,7 @@ initial begin
     end
 
     for ( i=0; i<4; i=i+1) begin
-        i_w[i]=16'h0001;
+        i_w[i]=16'h0100;
     end
     #(5*CLK_period);
    ////////test random variables with the acual twiddle values ///////////
@@ -56,6 +56,34 @@ initial begin
     i_w[1]=16'h05fb;
     i_w[2]=16'h00ff;
     i_w[3]=16'hfbfb;
+    #(5*CLK_period);
+   ////////test large positive values ///////////
+
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=16'h7f7f;
+    end
+    #(5*CLK_period);
+   ////////test large negative values ///////////
+
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=16'h8080;
+    end
+
+    #(5*CLK_period);
+   ////////test large postive real  values and large negative img values ///////////
+
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=16'h7f80;
+    end
+
+    #(5*CLK_period);
+   ////////test large postive img   values and large negative real  values ///////////
+
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=16'h807f;
+    end
+
+
 end
 
 
