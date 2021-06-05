@@ -2,7 +2,7 @@
 
 
 module tb_Stage2#(  parameter p_inputBits=16,
-                    parameter p_outputBits=28,
+                    parameter p_outputBits=20,
                     parameter p_widdleBits=16,
                     parameter p_PointPosition=3,
                     parameter p_realBits = 8
