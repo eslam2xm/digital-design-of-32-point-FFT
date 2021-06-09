@@ -1,11 +1,13 @@
 `timescale 1ns / 1ps
 
 
-module tb_Stage2#(  parameter p_inputBits=16,
+module tb_Stage2#(  parameter p_inputBits=20,
                     parameter p_outputBits=20,
                     parameter p_widdleBits=16,
                     parameter p_PointPosition=3,
-                    parameter p_realBits = 8
+                    parameter p_realBits = 10,
+                    parameter p_numberOf_unneded_bits=4
+
             );
 
 reg [p_inputBits-1:0]  i_b [31:0];

@@ -5,11 +5,12 @@ there are four different  widdle values at this stage
 there are 32 outputs from c0 to c31 
 */
 
-module Stage2 #(    parameter p_inputBits=16,
+module Stage2 #(    parameter p_inputBits=20,
                     parameter p_outputBits=20,
                     parameter p_widdleBits=16,
                     parameter p_PointPosition=3,
-                    parameter p_realBits = 8
+                    parameter p_realBits = 10,
+                    parameter p_numberOf_unneded_bits=4
 
             )
             (   
@@ -98,41 +99,41 @@ wire [2* (2*p_realBits - p_PointPosition) + 1 : 0]   w_c0,w_c1,w_c2,w_c3,w_c4,w_
 
 
 //////// remove 4 bits from the real part  and 4 bits from the img part of the Mac outputs as they are unneeded /////
-assign o_c0 = {w_c0[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c0[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c1 = {w_c1[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c1[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c2 = {w_c2[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c2[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c3 = {w_c3[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c3[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c4 = {w_c4[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c4[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c5 = {w_c5[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c5[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c6 = {w_c6[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c6[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c7 = {w_c7[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c7[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c8 = {w_c8[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c8[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c9 = {w_c9[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c9[((2*p_realBits - p_PointPosition) + 1-5):0]};
+assign o_c0 = {w_c0[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c0[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c1 = {w_c1[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c1[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c2 = {w_c2[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c2[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c3 = {w_c3[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c3[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c4 = {w_c4[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c4[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c5 = {w_c5[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c5[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c6 = {w_c6[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c6[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c7 = {w_c7[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c7[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c8 = {w_c8[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c8[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c9 = {w_c9[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c9[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
 
-assign o_c10 = {w_c10[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c10[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c11 = {w_c11[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c11[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c12 = {w_c12[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c12[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c13 = {w_c13[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c13[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c14 = {w_c14[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c14[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c15 = {w_c15[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c15[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c16 = {w_c16[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c16[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c17 = {w_c17[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c17[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c18 = {w_c18[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c18[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c19 = {w_c19[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c19[((2*p_realBits - p_PointPosition) + 1-5):0]};
+assign o_c10 = {w_c10[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c10[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c11 = {w_c11[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c11[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c12 = {w_c12[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c12[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c13 = {w_c13[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c13[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c14 = {w_c14[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c14[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c15 = {w_c15[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c15[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c16 = {w_c16[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c16[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c17 = {w_c17[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c17[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c18 = {w_c18[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c18[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c19 = {w_c19[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c19[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
 
-assign o_c20 = {w_c20[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c20[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c21 = {w_c21[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c21[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c22 = {w_c22[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c22[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c23 = {w_c23[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c23[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c24 = {w_c24[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c24[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c25 = {w_c25[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c25[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c26 = {w_c26[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c26[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c27 = {w_c27[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c27[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c28 = {w_c28[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c28[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c29 = {w_c29[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c29[((2*p_realBits - p_PointPosition) + 1-5):0]};
+assign o_c20 = {w_c20[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c20[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c21 = {w_c21[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c21[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c22 = {w_c22[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c22[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c23 = {w_c23[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c23[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c24 = {w_c24[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c24[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c25 = {w_c25[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c25[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c26 = {w_c26[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c26[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c27 = {w_c27[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c27[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c28 = {w_c28[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c28[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c29 = {w_c29[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c29[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
 
-assign o_c30 = {w_c30[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c30[((2*p_realBits - p_PointPosition) + 1-5):0]};
-assign o_c31 = {w_c31[(2* (2*p_realBits - p_PointPosition) + 1-4):((2*p_realBits - p_PointPosition) + 1)],w_c31[((2*p_realBits - p_PointPosition) + 1-5):0]};
+assign o_c30 = {w_c30[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c30[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
+assign o_c31 = {w_c31[(2* (2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits):((2*p_realBits - p_PointPosition) + 1)],w_c31[((2*p_realBits - p_PointPosition) + 1-p_numberOf_unneded_bits-1):0]};
 
 
 
