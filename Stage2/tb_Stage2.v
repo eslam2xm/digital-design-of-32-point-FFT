@@ -99,7 +99,8 @@ Stage2 #(   .p_inputBits        (p_inputBits),
             .p_outputBits       ( p_outputBits),
             .p_widdleBits       ( p_widdleBits),
             .p_PointPosition    ( p_PointPosition),
-            .p_realBits         (p_realBits)
+            .p_realBits         (p_realBits),
+            .p_numberOf_unneded_bits(p_numberOf_unneded_bits)
             )
             stage_2
             (   
