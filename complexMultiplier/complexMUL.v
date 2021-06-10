@@ -42,14 +42,29 @@ module complexMUL #(    parameter p_inputWidth          = 8,
     assign ImagResult = {I1[2 * p_inputWidth - 1], I1} + {I2[2 * p_inputWidth - 1], I2};
     
     
-    //Removing bits left and right to fit the width we want
-    //The integer width is simply the output width needed without the point position
-    //For the decimal part we discard from the right what is not longer than the speicified output point position
-    assign o_ResR = {RealResult [2 * p_inputWidth : 2*p_PointPosition], 
-                     RealResult [2* p_PointPosition - 1 : p_PointPosition]};
-                     
-    assign o_ResI = {ImagResult [2 * p_inputWidth : 2*p_PointPosition], 
-                     ImagResult [2* p_PointPosition - 1 : p_PointPosition]};
+    // Generate block to handle the p_PointPosition=0 case
+    generate
+    
+        if(p_PointPosition != 0 ) begin
+            //Removing bits left and right to fit the width we want
+            //The integer width is simply the output width needed without the point position
+            //For the decimal part we discard from the right what is not longer than the speicified output point position
+            assign o_ResR = {RealResult [2 * p_inputWidth : 2*p_PointPosition], 
+                             RealResult [2* p_PointPosition - 1 : p_PointPosition]};
+                             
+            assign o_ResI = {ImagResult [2 * p_inputWidth : 2*p_PointPosition], 
+                             ImagResult [2* p_PointPosition - 1 : p_PointPosition]};
+                             
+         end
+         else begin
+            // if there is no decimal bits then just output the value without removing bits
+            assign o_ResR = RealResult [2 * p_inputWidth : 0];
+                             
+            assign o_ResI = ImagResult [2 * p_inputWidth : 0];
+         
+         end
+     
+     endgenerate
     
 endmodule
 
