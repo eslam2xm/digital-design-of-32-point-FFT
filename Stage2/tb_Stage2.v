@@ -1,17 +1,15 @@
 `timescale 1ns / 1ps
 
 
-module tb_Stage2#(  parameter p_inputBits=20,
-                    parameter p_outputBits=20,
-                    parameter p_widdleBits=16,
+module tb_Stage2#(  parameter p_inputBits =20,
+                    parameter p_outputBits=28,
                     parameter p_PointPosition=3,
-                    parameter p_realBits = 10,
-                    parameter p_numberOf_unneded_bits=4
+                    parameter p_realBits = 13,
+                    parameter p_numberOf_unneded_bits=10
 
             );
 
 reg [p_inputBits-1:0]  i_b [31:0];
-reg [p_widdleBits-1:0]  i_w[3:0];
 reg CLK;
 reg CLK5;
 reg RST;
@@ -40,49 +38,35 @@ initial begin
     # (5*CLK_period*5) ;
     RST = 0 ;
    
-   ////////test random variables with all twiddle values equal to one ///////////
-    for ( i=0; i<32; i=i+1) begin
-        i_b[i]=$urandom;
-    end
-
-    for ( i=0; i<4; i=i+1) begin
-        i_w[i]=16'h0100;
-    end
-    #(5*CLK_period);
    ////////test random variables with the acual twiddle values ///////////
 
     for ( i=0; i<32; i=i+1) begin
         i_b[i]=$urandom;
     end
-    i_w[0]=16'h0100;
-    i_w[1]=16'h05fb;
-    i_w[2]=16'h00ff;
-    i_w[3]=16'hfbfb;
     #(5*CLK_period);
    ////////test large positive values ///////////
+    ///       real = 0 , img = large positive 
+    for ( i=0; i<32; i=i+1) begin
+        i_b[i]=20'h1FF;
+    end
+    #(5*CLK_period);
+    ///       real = large positive , img = 0 
 
     for ( i=0; i<32; i=i+1) begin
-        i_b[i]=16'h7f7f;
+        i_b[i]=20'h7FC00;
     end
     #(5*CLK_period);
    ////////test large negative values ///////////
+    ///       real = 0 , img = large negative 
 
     for ( i=0; i<32; i=i+1) begin
-        i_b[i]=16'h8080;
+        i_b[i]=20'h200;
     end
 
     #(5*CLK_period);
-   ////////test large postive real  values and large negative img values ///////////
-
+    ///       real = large negative , img = 0 
     for ( i=0; i<32; i=i+1) begin
-        i_b[i]=16'h7f80;
-    end
-
-    #(5*CLK_period);
-   ////////test large postive img   values and large negative real  values ///////////
-
-    for ( i=0; i<32; i=i+1) begin
-        i_b[i]=16'h807f;
+        i_b[i]=20'h80000;
     end
 
 
@@ -96,8 +80,6 @@ end
 
 
 Stage2 #(   .p_inputBits        (p_inputBits),
-            .p_outputBits       ( p_outputBits),
-            .p_widdleBits       ( p_widdleBits),
             .p_PointPosition    ( p_PointPosition),
             .p_realBits         (p_realBits),
             .p_numberOf_unneded_bits(p_numberOf_unneded_bits)
@@ -141,11 +123,6 @@ Stage2 #(   .p_inputBits        (p_inputBits),
                 .i_b29(i_b[29])  ,
                 .i_b30(i_b[30])  ,
                 .i_b31(i_b[31])  ,
-                ////////// Widdle at the stage ///////
-                .i_w08(i_w[0]),
-                .i_w18(i_w[1]),
-                .i_w28(i_w[2]),
-                .i_w38(i_w[3]),
                 ////// Outputs from the stage ///////
                 .o_c0(o_c[0])  ,
                 .o_c1(o_c[1])  ,
