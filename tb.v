@@ -198,7 +198,7 @@ initial begin
     x29 = 0;
     x30 = 0;
     x31 = 0;
-    #5;
+    #25;
     RST = 0;
     
     @(posedge CLK_10);

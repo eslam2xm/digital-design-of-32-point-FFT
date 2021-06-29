@@ -178,7 +178,7 @@ module Top #(
  
  Register #(8) regI31 ( .i_data(x31), .i_load(1'b1), .CLK(CLK_10), .o_data(i_x[31]));
     
- stage0 #( .p_inputWidth(p_InputWidth),
+ stage0_withoutMAC #( .p_inputWidth(p_InputWidth),
                  .p_PointPosition (0)
                 )
                 Stage0
@@ -312,7 +312,7 @@ module Top #(
 
                 ////////// Widdle at the stage ///////
                 .i_w04(18'h00200),
-                .i_w14(18'h00001),
+                .i_w14(18'h001FF),
                 ////// Outputs from the stage ///////
                 
                 .o_b0(o_b[0]),
