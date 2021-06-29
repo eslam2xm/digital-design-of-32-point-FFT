@@ -172,6 +172,10 @@ module stage0 #(parameter p_inputWidth = 8,
                  //------------------------------- MACS -------------------------------\\
                   sharedComplexMUL #(.p_inputWidth(p_inputWidth), .p_PointPosition(p_PointPosition)) mac0
                   (
+                  
+                    .CLK(CLK),
+                    .RST(RST),
+                    
                     .i_m1(w_x1),
                     .i_m2(w_x3),
                     .i_m3(w_x5),
@@ -199,6 +203,10 @@ module stage0 #(parameter p_inputWidth = 8,
                   
                   sharedComplexMUL #(.p_inputWidth(p_inputWidth), .p_PointPosition(p_PointPosition)) mac1
                   (
+                  
+                    .CLK(CLK),
+                    .RST(RST),
+                    
                     .i_m1(w_x9),
                     .i_m2(w_x11),
                     .i_m3(w_x13),
@@ -226,6 +234,10 @@ module stage0 #(parameter p_inputWidth = 8,
                   
                   sharedComplexMUL #(.p_inputWidth(p_inputWidth), .p_PointPosition(p_PointPosition)) mac2
                   (
+                  
+                    .CLK(CLK),
+                    .RST(RST),
+                    
                     .i_m1(w_x17),
                     .i_m2(w_x19),
                     .i_m3(w_x21),
@@ -253,6 +265,10 @@ module stage0 #(parameter p_inputWidth = 8,
                   
                   sharedComplexMUL #(.p_inputWidth(p_inputWidth), .p_PointPosition(p_PointPosition)) mac4
                   (
+                  
+                    .CLK(CLK),
+                    .RST(RST),
+                    
                     .i_m1(w_x25),
                     .i_m2(w_x27),
                     .i_m3(w_x29),

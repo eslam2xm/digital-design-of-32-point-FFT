@@ -3,10 +3,10 @@ module tb();
 parameter inNumOfBits  = 8 ;
 parameter outNumOfBits = 32;
 
-reg [inNumOfBits-1 : 0] x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,x17,x18,x19,x20,
+reg signed [inNumOfBits-1 : 0] x0,x1,x2,x3,x4,x5,x6,x7,x8,x9,x10,x11,x12,x13,x14,x15,x16,x17,x18,x19,x20,
                         x21,x22,x23,x24,x25,x26,x27,x28,x29,x30,x31;
 
-wire [outNumOfBits-1 : 0] X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,
+wire signed [outNumOfBits-1 : 0] X0,X1,X2,X3,X4,X5,X6,X7,X8,X9,X10,X11,X12,X13,X14,X15,X16,X17,X18,X19,X20,
                         X21,X22,X23,X24,X25,X26,X27,X28,X29,X30,X31;
 
 reg RST,CLK_10,CLK_50;
@@ -81,22 +81,18 @@ Top uut(
         .X28(X28),
         .X29(X29),
         .X30(X30),
-        .X31(X31),
+        .X31(X31)
         );
 
 //pipeline clock
 always
 begin
-    CLK_10 = 0;
-    #50;
-    CLK_10 = 1;
+    #25 CLK_10 = !CLK_10;
 end
 //MAC clock
 always
 begin
-    CLK_50 = 0;
-    #10;
-    CLK_50 = 1;
+    #5 CLK_50 = !CLK_50;
 end
 
 integer data_file, out_file;//file handles
@@ -125,7 +121,7 @@ begin
     for (i = 0; i<32; i = i+1)
     begin
         f = $fscanf(data_file,"%d\n",inputs[i]);
-        $display("%0d",inputs[i]);
+       // $display("%0d",inputs[i]);
     end
     x0 = inputs[0];
     x1 = inputs[1];
@@ -167,6 +163,8 @@ end
 event out_event;//event to trigger output block
 //this block initializes uut and and resseting it 
 initial begin
+    CLK_10 =0;
+    CLK_50=0;
     RST = 1;
     x0 = 0;
     x1 = 0;
@@ -202,8 +200,6 @@ initial begin
     x31 = 0;
     #5;
     RST = 0;
-    #5;
-    RST = 1;
     
     @(posedge CLK_10);
     @(posedge CLK_10);
@@ -227,7 +223,6 @@ begin
             $display("Expected Value for %0d : %0s",k,outputs[k]);
         end
     end
-    $finish;
 end
 
 endmodule
