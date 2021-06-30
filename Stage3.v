@@ -102,13 +102,13 @@ module Stage3 #(    parameter p_realBits=14,
             
     // Widdles in the stage Real | Imag //
     localparam [p_widdleBits-1:0] p_W0_16 = 28'h0020000 , // 1
-                               p_W1_16 = 28'h001C003 , // 0.924 + 0.383 J
-                               p_W2_16 = 28'h000C006 , // 0.707 + 0.707 J
-                               p_W3_16 = 28'h000C007 , // 0.383 + 0.924 J
-                               p_W4_16 = 28'h0000008 , // J
-                               p_W5_16 = 28'hFFF4007 , // -0.383 + 0.924 J
-                               p_W6_16 = 28'hFFF8006 , // -0.707 + 0.707 J
-                               p_W7_16 = 28'hFFE4003 ; // -0.924 + 0.383 J
+                               p_W1_16 = 28'h001FFFD , // 0.924 - 0.383 J
+                               p_W2_16 = 28'h001BFFA , // 0.707 - 0.707 J
+                               p_W3_16 = 28'h000FFF9 , // 0.383 - 0.924 J
+                               p_W4_16 = 28'h0003FF8 , // - J
+                               p_W5_16 = 28'hFFF7FF9 , // -0.383 - 0.924 J
+                               p_W6_16 = 28'hFFFBFFA , // -0.707 - 0.707 J
+                               p_W7_16 = 28'hFFE7FFD ; // -0.924 - 0.383 J
 
   wire [2*(p_inputBits-p_PointPosition) - 1 :0 ] w_d0,w_d1,w_d2,w_d3,w_d4,w_d5,w_d6,w_d7,
                                                  w_d8,w_d9,w_d10,w_d11,w_d12,w_d13,w_d14,w_d15,w_d16,

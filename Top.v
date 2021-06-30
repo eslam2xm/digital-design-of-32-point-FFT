@@ -267,7 +267,7 @@ module Top #(
     
     Stage1 #( .p_inputBits(9),
                     .p_outputBits(20),
-                    .p_widdleBits(16),
+                    .p_widdleBits(18),
                     .p_PointPosition(0),
                     .p_realBits(9)
             )

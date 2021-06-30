@@ -91,10 +91,10 @@ module Stage2 #(    parameter p_inputBits =20,
 
 
 localparam
-i_w08=26'h2000, // 1
-i_w18=26'hBFFB, // 0.7071-j0.7071
-i_w28=26'h1FFF, // -j
-i_w38=26'h3FF7FFB; // -0.7071-j0.7071
+i_w08=26'h10000, // 1
+i_w18=26'hDFFA, // 0.7071-j0.7071
+i_w28=26'h1FF8, // -j
+i_w38=26'h3FF5FFA; // -0.7071-j0.7071
 
 
 wire [p_inputBits + 2*p_PointPosition - 1 : 0]    w_x0,w_x1,w_x2,w_x3,w_x4,w_x5,w_x6,w_x7,w_x8,w_x9,
