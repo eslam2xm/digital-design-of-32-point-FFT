@@ -147,44 +147,44 @@ wire [2* (2*p_realBits - p_PointPosition) + 1 : 0]   w_b0,w_b1,w_b2,w_b3,w_b4,w_
 //assigning output extracting the real and imaginary parts
 // w_b0[28:19 , 9:0 ]
 assign o_b0 = { w_b0[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b1 = { w_b1[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b2 = { w_b2[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b3 = { w_b3[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
+assign o_b1 = { w_b1[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b1[p_inputBits : 0]   };
+assign o_b2 = { w_b2[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b2[p_inputBits : 0]   };
+assign o_b3 = { w_b3[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b3[p_inputBits : 0]   };
 
-assign o_b4 =  { w_b4[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b5 =  { w_b5[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b6 =  { w_b6[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b7 =  { w_b7[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
+assign o_b4 =  { w_b4[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b4[p_inputBits : 0]   };
+assign o_b5 =  { w_b5[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b5[p_inputBits : 0]   };
+assign o_b6 =  { w_b6[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b6[p_inputBits : 0]   };
+assign o_b7 =  { w_b7[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b7[p_inputBits : 0]   };
 
-assign o_b8 =  { w_b8[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b9 =  { w_b9[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]   };
-assign o_b10 = { w_b10[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b11 = { w_b11[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
+assign o_b8 =  { w_b8[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b8[p_inputBits : 0]   };
+assign o_b9 =  { w_b9[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b9[p_inputBits : 0]   };
+assign o_b10 = { w_b10[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b10[p_inputBits : 0]  };
+assign o_b11 = { w_b11[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b11[p_inputBits : 0]  };
 
-assign o_b12 = { w_b12[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b13 = { w_b13[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b14 = { w_b14[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b15 = { w_b15[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
+assign o_b12 = { w_b12[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b12[p_inputBits : 0]  };
+assign o_b13 = { w_b13[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b13[p_inputBits : 0]  };
+assign o_b14 = { w_b14[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b14[p_inputBits : 0]  };
+assign o_b15 = { w_b15[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b15[p_inputBits : 0]  };
 
-assign o_b16 = { w_b16[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b17 = { w_b17[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b18 = { w_b18[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b19 = { w_b19[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
+assign o_b16 = { w_b16[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b16[p_inputBits : 0]  };
+assign o_b17 = { w_b17[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b17[p_inputBits : 0]  };
+assign o_b18 = { w_b18[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b18[p_inputBits : 0]  };
+assign o_b19 = { w_b19[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b19[p_inputBits : 0]  };
 
-assign o_b20 = { w_b20[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b21 = { w_b21[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b22 = { w_b22[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b23 = { w_b23[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
+assign o_b20 = { w_b20[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b20[p_inputBits : 0]  };
+assign o_b21 = { w_b21[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b21[p_inputBits : 0]  };
+assign o_b22 = { w_b22[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b22[p_inputBits : 0]  };
+assign o_b23 = { w_b23[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b23[p_inputBits : 0]  };
 
-assign o_b24 = { w_b24[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b25 = { w_b25[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b26 = { w_b26[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b27 = { w_b27[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
+assign o_b24 = { w_b24[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b24[p_inputBits : 0]  };
+assign o_b25 = { w_b25[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b25[p_inputBits : 0]  };
+assign o_b26 = { w_b26[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b26[p_inputBits : 0]  };
+assign o_b27 = { w_b27[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b27[p_inputBits : 0]  };
 
-assign o_b28 = { w_b28[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b29 = { w_b29[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b30 = { w_b30[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
-assign o_b31 = { w_b31[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b0[p_inputBits : 0]  };
+assign o_b28 = { w_b28[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b28[p_inputBits : 0]  };
+assign o_b29 = { w_b29[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b29[p_inputBits : 0]  };
+assign o_b30 = { w_b30[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b30[p_inputBits : 0]  };
+assign o_b31 = { w_b31[2* (2*p_inputBits) - p_inputBits + 1 : (2*p_inputBits) + 1] , w_b31[p_inputBits : 0]  };
 
 
 
